@@ -55,8 +55,8 @@ shuffle(fonts);
     let front = fronts[i];
     let font = fonts[i];
     front.classList.add("" + font);
-    console.log(front);
-    console.log(font);
+    // console.log(front);
+    // console.log(font);
   }
 // }
 
