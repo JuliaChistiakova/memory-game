@@ -34,9 +34,15 @@ const fronts = document.querySelectorAll('.front');
 
 const restart = document.querySelector('.restart');
 
+let timer = document.getElementById('timer');
+
+timer.innerHTML = "0 m : 0 s";
+
 let openCards = [];
 
 let matchedCards = [];
+
+let clickCount = 0;
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -74,9 +80,32 @@ function click() {
 		     event.preventDefault();
 		     card.classList.toggle('open');
 		});
+		clickCount++;
+
+		if (clickCount === 1) {
+	      startTimer();
+	    }
 	}
 }
 
+let seconds = 0,
+  minute = 0,
+  hour = 0;
+
+function startTimer() {
+  interval = setInterval(function() {
+    timer.innerHTML = minute + " m " + " : " + seconds + " s ";
+    seconds++;
+    if (seconds == 60) {
+      minute++;
+      second = 0;
+    }
+    if (minute == 60) {
+      hour++;
+      minute = 0;
+    }
+  }, 1000);
+} 
 
 restart.addEventListener('click', function (event) {
 	shuffle(fonts);
@@ -85,7 +114,7 @@ restart.addEventListener('click', function (event) {
 	    let font = fonts[i];
 	    let card = cards[i];
 	
-	   	front.classList.remove(  "bodoni", "carol_gothic", "futura", "karolla", "pragmatica", "olga_script", "lazurski", "liberteen",);
+	   	front.classList.remove( "bodoni", "carol_gothic", "futura", "karolla", "pragmatica", "olga_script", "lazurski", "liberteen",);
 	    card.classList.remove('open');
 
 	    front.classList.add("" + font);
