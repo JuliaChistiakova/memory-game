@@ -25,12 +25,20 @@ function shuffle(array) {
     return array;
 }
 
-const card = document.querySelector('.card');
+const cards = document.querySelectorAll('.card');
 
-card.addEventListener('click', function (event) {
-     event.preventDefault();
-     card.classList.toggle('open');
-});
+for(let i = 0; i < cards.length; i++){
+	
+	let card = cards[i];
+
+	card.addEventListener('click', function (event) {
+	     event.preventDefault();
+	     card.classList.toggle('open');
+	});
+
+	// console.log(card);
+}
+
 
 document.addEventListener('DOMContentLoaded', function () {
    
