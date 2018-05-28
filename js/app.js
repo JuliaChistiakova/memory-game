@@ -32,6 +32,12 @@ const cards = document.querySelectorAll('.card');
 
 const fronts = document.querySelectorAll('.front');
 
+const restart = document.querySelector('.restart');
+
+let openCards = [];
+
+let matchedCards = [];
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -47,36 +53,55 @@ function shuffle(array) {
     return array;
 }
 
+
 shuffle(fonts);
 
-
-// function init() {
+// Assign random font backgrounds to the cards
+function init() {
   for (let i = 0; i < fronts.length; i++) {
     let front = fronts[i];
     let font = fonts[i];
     front.classList.add("" + font);
-    // console.log(front);
-    // console.log(font);
   }
-// }
-
-
-
-
-for(let i = 0; i < cards.length; i++){
-	
-	let card = cards[i];
-
-	card.addEventListener('click', function (event) {
-	     event.preventDefault();
-	     card.classList.toggle('open');
-	});
-
 }
 
 
+// Rotate the cards on click
+function click() {
+	for(let i = 0; i < cards.length; i++){
+		let card = cards[i];
+		card.addEventListener('click', function (event) {
+		     event.preventDefault();
+		     card.classList.toggle('open');
+		});
+	}
+}
+
+
+restart.addEventListener('click', function (event) {
+	shuffle(fonts);
+  	for (let i = 0; i < fronts.length; i++) {
+	    let front = fronts[i];
+	    let font = fonts[i];
+	    let card = cards[i];
+	
+	   	front.classList.remove(  "bodoni", "carol_gothic", "futura", "karolla", "pragmatica", "olga_script", "lazurski", "liberteen",);
+	    card.classList.remove('open');
+
+	    front.classList.add("" + font);
+  	}
+
+	init();
+});
+	
+
 document.addEventListener('DOMContentLoaded', function () {
-   
+
+   init();
+   click();
+
+
+
 });
 
 /*
