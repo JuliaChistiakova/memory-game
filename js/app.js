@@ -9,6 +9,28 @@
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+const fonts = [
+  "bodoni",
+  "carol_gothic",
+  "futura",
+  "karolla",
+  "pragmatica",
+  "olga_script",
+  "lazurski",
+  "liberteen",
+  "bodoni",
+  "carol_gothic",
+  "futura",
+  "karolla",
+  "pragmatica",
+  "olga_script",
+  "lazurski",
+  "liberteen",
+];
+
+const cards = document.querySelectorAll('.card');
+
+const fronts = document.querySelectorAll('.front');
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -25,7 +47,21 @@ function shuffle(array) {
     return array;
 }
 
-const cards = document.querySelectorAll('.card');
+shuffle(fonts);
+
+
+// function init() {
+  for (let i = 0; i < fronts.length; i++) {
+    let front = fronts[i];
+    let font = fonts[i];
+    front.classList.add("" + font);
+    console.log(front);
+    console.log(font);
+  }
+// }
+
+
+
 
 for(let i = 0; i < cards.length; i++){
 	
@@ -36,7 +72,6 @@ for(let i = 0; i < cards.length; i++){
 	     card.classList.toggle('open');
 	});
 
-	// console.log(card);
 }
 
 
