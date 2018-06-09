@@ -50,6 +50,10 @@ let matchedCards = [];
 
 let clickCount = 0;
 
+
+const stars = document.querySelector('.stars'); 
+const star = document.querySelectorAll('.stars li'); 
+
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
     var currentIndex = array.length, temporaryValue, randomIndex;
@@ -88,9 +92,17 @@ function clickCard() {
 
     clickCount++;
 
+
+
     moves ++ ;
     movesCount.innerHTML = " " + moves;
 
+    if (moves === 16) {
+    stars.removeChild(star[0]);
+    }
+    else if (moves === 26) {
+    stars.removeChild(star[1]);
+    }
 
     if (clickCount === 1) {
         startTimer();
@@ -131,6 +143,7 @@ function finishGame() {
 
 }
 
+
 function restartGame() { 
 	restart.addEventListener('click', function (event) {
 		shuffle(fonts);
@@ -156,6 +169,7 @@ function restartGame() {
 	});
 
 }
+
 
 document.addEventListener('DOMContentLoaded', function () {
 
