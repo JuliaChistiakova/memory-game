@@ -69,7 +69,7 @@ function shuffle(array) {
 shuffle(fonts);
 
 // Assign random font backgrounds to the cards
-function init() {
+function initGame() {
   for (let i = 0; i < fronts.length; i++) {
     let front = fronts[i];
     let font = fonts[i];
@@ -79,7 +79,7 @@ function init() {
 
 
 // Rotate the cards on click
-function click() {
+function clickCard() {
 	for (let i = 0; i < cards.length; i++){
 		let card = cards[i];
 		card.addEventListener('click', function (event) {
@@ -102,12 +102,6 @@ function click() {
 }
 
 
-
-// function addMove() {
-//   let moves = 0;
-//   moves ++;
-//   movesCount.innerHTML = " " + moves;
-// }
 
 function startTimer() {
 
@@ -137,34 +131,37 @@ function finishGame() {
 
 }
 
-
-	// restart.addEventListener('click', function (event) {
-	// 	shuffle(fonts);
+function restartGame() { 
+	restart.addEventListener('click', function (event) {
+		shuffle(fonts);
 	
-	//   	for (let i = 0; i < fronts.length; i++) {
-	// 	    let front = fronts[i];
-	// 	    let font = fonts[i];
-	// 	    let card = cards[i];
+	  	for (let i = 0; i < fronts.length; i++) {
+		    let front = fronts[i];
+		    let font = fonts[i];
+		    let card = cards[i];
 		
-	// 	   	front.classList.remove( "bodoni", "carol_gothic", "futura", "karolla", "pragmatica", "olga_script", "lazurski", "liberteen",);
-	// 	    card.classList.remove('open');
+		   	front.classList.remove( "bodoni", "carol_gothic", "futura", "karolla", "pragmatica", "olga_script", "lazurski", "liberteen",);
+		    card.classList.remove('open');
 
-	// 	    front.classList.add("" + font);
-	//   	}
+		    front.classList.add("" + font);
+	  	}
 
-	// 	init();
+		timer.innerHTML = "0 m : 0 s";
+		clearInterval(interval);
+		clickCount = 0;
+    moves = 0;
+    movesCount.innerHTML = " " + moves;
 
-	// 	timer.innerHTML = "0 m : 0 s";
-	// 	clearInterval(interval);
-	// 	clickCount = 0;
-	// });
+    initGame();
+	});
 
+}
 
 document.addEventListener('DOMContentLoaded', function () {
 
-   init();
-
-   click();
+   initGame();
+   clickCard();
+   restartGame() 
 
 
 
