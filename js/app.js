@@ -34,9 +34,15 @@ const fronts = document.querySelectorAll('.front');
 
 const restart = document.querySelector('.restart');
 
-let timer = document.getElementById('timer');
+const movesCount = document.querySelector('.moves');
+
+let moves = 0;
+
+let timer = document.querySelector('.timer');
 
 timer.innerHTML = "0 m : 0 s";
+
+let interval = 0;
 
 let openCards = [];
 
@@ -74,59 +80,90 @@ function init() {
 
 // Rotate the cards on click
 function click() {
-	for(let i = 0; i < cards.length; i++){
+	for (let i = 0; i < cards.length; i++){
 		let card = cards[i];
 		card.addEventListener('click', function (event) {
 		     event.preventDefault();
 		     card.classList.toggle('open');
-		});
-		clickCount++;
 
-		if (clickCount === 1) {
-	      startTimer();
-	    }
+    clickCount++;
+
+    moves ++ ;
+    movesCount.innerHTML = " " + moves;
+
+
+    if (clickCount === 1) {
+        startTimer();
+      }
+
+		});
+
 	}
 }
 
-let seconds = 0,
-  minute = 0,
-  hour = 0;
+
+
+// function addMove() {
+//   let moves = 0;
+//   moves ++;
+//   movesCount.innerHTML = " " + moves;
+// }
 
 function startTimer() {
+
+  let seconds = 0,
+	    minutes = 0,
+	    hours = 0;
+
   interval = setInterval(function() {
-    timer.innerHTML = minute + " m " + " : " + seconds + " s ";
+    timer.innerHTML = minutes + " m " + " : " + seconds + " s ";
     seconds++;
     if (seconds == 60) {
-      minute++;
-      second = 0;
+      minutes++;
+      seconds = 0;
     }
-    if (minute == 60) {
-      hour++;
-      minute = 0;
+    if (minutes == 60) {
+      hours++;
+      minutes = 0;
     }
   }, 1000);
 } 
 
-restart.addEventListener('click', function (event) {
-	shuffle(fonts);
-  	for (let i = 0; i < fronts.length; i++) {
-	    let front = fronts[i];
-	    let font = fonts[i];
-	    let card = cards[i];
-	
-	   	front.classList.remove( "bodoni", "carol_gothic", "futura", "karolla", "pragmatica", "olga_script", "lazurski", "liberteen",);
-	    card.classList.remove('open');
+function compareCards(cardA, cardB) {
 
-	    front.classList.add("" + font);
-  	}
+}
 
-	init();
-});
+function finishGame() {
+
+}
+
+
+	// restart.addEventListener('click', function (event) {
+	// 	shuffle(fonts);
 	
+	//   	for (let i = 0; i < fronts.length; i++) {
+	// 	    let front = fronts[i];
+	// 	    let font = fonts[i];
+	// 	    let card = cards[i];
+		
+	// 	   	front.classList.remove( "bodoni", "carol_gothic", "futura", "karolla", "pragmatica", "olga_script", "lazurski", "liberteen",);
+	// 	    card.classList.remove('open');
+
+	// 	    front.classList.add("" + font);
+	//   	}
+
+	// 	init();
+
+	// 	timer.innerHTML = "0 m : 0 s";
+	// 	clearInterval(interval);
+	// 	clickCount = 0;
+	// });
+
 
 document.addEventListener('DOMContentLoaded', function () {
 
    init();
+
    click();
 
 

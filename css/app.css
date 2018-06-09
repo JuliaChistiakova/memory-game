@@ -183,7 +183,7 @@ h1 {
 
 .score-panel {
     text-align: left;
-    width: 500px;
+    width: 450px;
     font-size: 1.3em;
 }
 
@@ -222,6 +222,7 @@ h1 {
     margin-left: 20px;
     border-radius: 5px;
 }
+
 footer {
     width: 1000px;
     margin: 0 auto;
