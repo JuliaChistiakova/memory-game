@@ -223,6 +223,27 @@ h1 {
     border-radius: 5px;
 }
 
+@keyframes shake {
+  0% {
+    transform: rotate(0deg);
+  }
+  20% {
+    transform: rotate(5deg);
+  }
+  40% {
+    transform: rotate(-5deg);
+  }
+  60% {
+    transform: rotate(5deg);
+  }
+  80% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
 footer {
     width: 1000px;
     margin: 0 auto;
@@ -239,3 +260,152 @@ footer a {
 footer a:hover {
     color: #FD8724;
 }
+
+/* responsiveness */
+
+@media only screen and (max-width: 450px) {
+
+  h1 {
+    font-size: 2em;
+  
+  }
+
+  .score-panel {
+    width: 90%;
+    font-size: 1em;
+  }
+
+  .deck {
+    width: 100%;
+    min-height:400px;
+    padding: 0 10px 0px  10px;
+    
+  }
+
+  .deck .card {
+    width: 90px;
+    height: 90px;
+  }
+
+  footer {
+    width: 90%;
+    font-size: 0.8em;
+  }
+
+}
+
+@media only screen and (min-width: 451px) and (max-width: 520px) {
+
+  h1 {
+    font-size: 2em;
+  
+  }
+
+  .score-panel {
+    width: 70%;
+    font-size: 1em;
+  }
+
+  .deck {
+    width: 440px;
+    min-height:477px;
+    padding: 0 10px 0px  10px;
+    
+  }
+
+  .deck .card {
+    width: 100px;
+    height: 100px;
+  }
+
+  footer {
+    width: 90%;
+    font-size: 0.8em;
+  }
+
+}
+
+@media only screen and (min-width: 521px) and (max-width: 620px) {
+
+  h1 {
+    font-size: 2.8em;
+  
+  }
+
+  .score-panel {
+    width: 70%;
+    font-size: 1.2em;
+  }
+
+  .deck {
+    width: 500px;
+    min-height:500px;
+    padding: 0 10px 0px  10px;
+    
+  }
+
+  .deck .card {
+    width: 115px;
+    height: 115px;
+  }
+
+  footer {
+    width: 90%;
+  }
+
+}
+
+@media only screen and (min-width: 621px) and (max-width: 720px) {
+ h1 {
+    font-size: 3.1em;
+  
+  }
+
+  .score-panel {
+    width: 60%;
+    font-size: 1.2em;
+  }
+
+  .deck {
+    width: 610px;
+    min-height:600px;
+    padding: 0 10px 0px  10px;
+    
+  }
+
+  .deck .card {
+    width: 140px;
+    height: 140px;
+  }
+
+  footer {
+    width: 90%;
+  }
+
+}
+
+
+@media only screen and (min-width: 724px) and (max-width: 1024px) {
+ h1 {
+    font-size: 3.5em;
+  
+  }
+
+  .deck {
+    width: 700px;
+    min-height:660px;
+    padding: 0 10px 0px  10px;
+    
+  }
+
+  .deck .card {
+    width: 155px;
+    height: 155px;
+  }
+
+  footer {
+    width: 90%;
+  }
+
+}
+
