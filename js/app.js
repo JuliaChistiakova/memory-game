@@ -44,12 +44,13 @@ timer.innerHTML = "0 m : 0 s";
 
 let interval = 0;
 
-let openCards = [];
+let openedCards = [];
 
 let matchedCards = [];
 
 let clickCount = 0;
 
+let lastFlipped = null;
 
 const stars = document.querySelector('.stars'); 
 const star = document.querySelectorAll('.stars li'); 
@@ -85,31 +86,38 @@ function initGame() {
 // Rotate the cards on click
 function clickCard() {
 	for (let i = 0; i < cards.length; i++){
-		let card = cards[i];
-		card.addEventListener('click', function (event) {
-		     event.preventDefault();
-		     card.classList.toggle('open');
 
-    clickCount++;
+  		let card = cards[i];
+  		card.addEventListener('click', function (event) {
+  		     event.preventDefault();
+           card.classList.toggle('open');
 
+           setTimeout(function () {
+  		       card.classList.toggle('open');
+           }, 1000);
 
+      clickCount++;
 
-    moves ++ ;
-    movesCount.innerHTML = " " + moves;
+      moves ++ ;
+      if (moves === 1) {
+        movesCount.innerHTML = " " + moves + " Move";
+      } else {
+        movesCount.innerHTML = " " + moves + " Moves";
+      };
 
-    if (moves === 16) {
-    stars.removeChild(star[0]);
-    }
-    else if (moves === 26) {
-    stars.removeChild(star[1]);
-    }
-
-    if (clickCount === 1) {
-        startTimer();
+      if (moves === 16) {
+      stars.removeChild(star[0]);
+      }
+      else if (moves === 26) {
+      stars.removeChild(star[1]);
       }
 
-		});
+      if (clickCount === 1) {
+          startTimer();
+        }
 
+  		});
+    
 	}
 }
 
@@ -135,12 +143,32 @@ function startTimer() {
   }, 1000);
 } 
 
+
+// function activateCards(cardA, cardB) {
+
+//    cards.forEach(function(card) {
+//      card.addEventListener('click', function() {
+//         if(lastFlipped) {
+//           compareCards(lastFlipped, card);
+//         } else {
+//           lastFlipped = card;
+//         }  
+//      }); 
+
+
+//    } 
+ 
+// }
+
 function compareCards(cardA, cardB) {
+
 
 }
 
 function finishGame() {
+  if (matchedCards.length === 16) {
 
+  };
 }
 
 
@@ -163,7 +191,7 @@ function restartGame() {
 		clearInterval(interval);
 		clickCount = 0;
     moves = 0;
-    movesCount.innerHTML = " " + moves;
+    movesCount.innerHTML = " " + moves + " Moves";
 
     initGame();
 	});
