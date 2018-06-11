@@ -9,6 +9,8 @@
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
+
+ // A list that holds all of the fonts
 const fonts = [
   "bodoni",
   "carol_gothic",
@@ -50,7 +52,7 @@ let matchedCards = [];
 
 let clickCount = 0;
 
-let lastFlipped = null;
+let lastFlipped = 0;
 
 const stars = document.querySelector('.stars'); 
 const star = document.querySelectorAll('.stars li'); 
@@ -83,38 +85,71 @@ function initGame() {
 }
 
 
-// Rotate the cards on click
+// Add an event listener to cards
 function clickCard() {
+   
 	for (let i = 0; i < cards.length; i++){
 
   		let card = cards[i];
+
+
   		card.addEventListener('click', function (event) {
-  		     event.preventDefault();
-           card.classList.toggle('open');
+  		    // event.preventDefault();
 
-           setTimeout(function () {
-  		       card.classList.toggle('open');
-           }, 1000);
+          const currentCard = this;
 
-      clickCount++;
+          const previousCard = openedCards[0];
 
-      moves ++ ;
-      if (moves === 1) {
-        movesCount.innerHTML = " " + moves + " Move";
-      } else {
-        movesCount.innerHTML = " " + moves + " Moves";
-      };
+          if (openedCards.length === 1) {
 
-      if (moves === 16) {
-      stars.removeChild(star[0]);
-      }
-      else if (moves === 26) {
-      stars.removeChild(star[1]);
-      }
+            card.classList.toggle('open'); 
 
-      if (clickCount === 1) {
-          startTimer();
-        }
+            openedCards.push(this);
+
+// Compare cards – if the front sides of both opened cards have the same classes, the cards match
+            if (currentCard.querySelector('div.front').className === previousCard.querySelector('div.front').className) {
+              console.log("Matched");
+              currentCard.classList.add('match');
+              previousCard.classList.add('match');
+              moves ++ ;
+            } else {             
+              console.log("Doesn't match");
+                  // currentCard.classList.add('no-match');
+                  // previousCard.classList.add('no-match'); 
+ // Close opened crads that don't match            
+              setTimeout(function () {
+                  currentCard.classList.remove('open');
+                  previousCard.classList.remove('open');
+              }, 800);
+            }
+            openedCards = [];
+            moves ++ ;
+          
+          } else {   
+            card.classList.toggle('open');      
+            openedCards.push(currentCard);            
+          }
+
+
+          clickCount++;
+
+          if (moves === 1) {
+              movesCount.innerHTML = " " + moves + " Move";
+          } else {
+              movesCount.innerHTML = " " + moves + " Moves";
+          }
+
+          if (moves === 16) {
+              stars.removeChild(star[0]);
+          }
+
+          else if (moves === 26) {
+             stars.removeChild(star[1]);
+          }
+
+          if (clickCount === 1) {
+              startTimer();
+            }
 
   		});
     
@@ -160,14 +195,31 @@ function startTimer() {
  
 // }
 
-function compareCards(cardA, cardB) {
+// function compareCards() {
 
+//   let cardAClass = openedCards[0].querySelector('div.front').className;
 
-}
+//   let cardBClass = openedCards[1].querySelector('div.front').className;
+
+//   if (cardAClass === cardBClass) {
+//         openedCards[0].classList.add('match');
+//         openedCards[1].classList.add('match');
+
+//   } else {
+//     setTimeout(function () {
+//         openedCards[0].classList.remove('open');
+//         openedCards[1].classList.remove('open');
+//     }, 500);
+
+//     // openedCards.shift();
+//     // openedCards.shift();
+//   }
+
+// }
 
 function finishGame() {
   if (matchedCards.length === 16) {
-
+    console.log("Win!!!");
   };
 }
 
@@ -192,7 +244,7 @@ function restartGame() {
 		clickCount = 0;
     moves = 0;
     movesCount.innerHTML = " " + moves + " Moves";
-
+    openedCards = [];
     initGame();
 	});
 
@@ -200,13 +252,10 @@ function restartGame() {
 
 
 document.addEventListener('DOMContentLoaded', function () {
-
    initGame();
    clickCard();
-   restartGame() 
-
-
-
+   restartGame();
+   finishGame();
 });
 
 /*
