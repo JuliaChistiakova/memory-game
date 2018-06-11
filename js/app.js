@@ -73,10 +73,11 @@ function shuffle(array) {
 }
 
 
-shuffle(fonts);
 
-// Assign random font backgrounds to the cards
+
+// Initiate the game – assign random font backgrounds to the cards
 function initGame() {
+  shuffle(fonts);
   for (let i = 0; i < fronts.length; i++) {
     let front = fronts[i];
     let font = fonts[i];
@@ -85,7 +86,7 @@ function initGame() {
 }
 
 
-// Add an event listener to cards
+// Flip the cards on click
 function clickCard() {
    
 	for (let i = 0; i < cards.length; i++){
@@ -95,43 +96,39 @@ function clickCard() {
 
   		card.addEventListener('click', function (event) {
   		    event.preventDefault();
-
           const currentCard = this;
-
           const previousCard = openedCards[0];
 
+// Prevent from clicking on the same card twice
           if (this.classList.contains("match")) {
             return;
           } 
 
-
-
           if (openedCards.length === 1) {
-
             card.classList.toggle('open'); 
-
             openedCards.push(this);
 
 // Compare cards – if the front sides of both opened cards have the same classes, the cards match
             if (currentCard.querySelector('div.front').className === previousCard.querySelector('div.front').className) {
-              console.log("Matched");
+              // console.log("Matched");
               currentCard.classList.add('match');
               previousCard.classList.add('match');
               matchedCards.push(currentCard,previousCard);
               moves ++ ;
               finishGame();
             } else {             
-              console.log("Doesn't match");
+              // console.log("Don't match");
                   // currentCard.classList.add('no-match');
                   // previousCard.classList.add('no-match'); 
+
  // Close opened cards that don't match           
               setTimeout(function () {
                   currentCard.classList.remove('open');
                   previousCard.classList.remove('open');
               }, 800);
             }
-            openedCards = [];
-            moves ++ ;
+              openedCards = [];
+              moves ++ ;
           
           } else {   
             card.classList.toggle('open');      
@@ -139,14 +136,13 @@ function clickCard() {
           }
 
 
-          clickCount++;
 
+// Lower the rating
           if (moves === 1) {
               movesCount.innerHTML = " " + moves + " Move";
           } else {
               movesCount.innerHTML = " " + moves + " Moves";
           }
-
           if (moves === 16) {
               stars.removeChild(star[0]);
           }
@@ -155,6 +151,8 @@ function clickCard() {
              stars.removeChild(star[1]);
           }
 
+// Start the timer on the first click
+          clickCount++;
           if (clickCount === 1) {
               startTimer();
             }
@@ -165,7 +163,7 @@ function clickCard() {
 }
 
 
-
+// Start the timer function
 function startTimer() {
 
   let seconds = 0,
@@ -187,44 +185,7 @@ function startTimer() {
 } 
 
 
-// function activateCards(cardA, cardB) {
-
-//    cards.forEach(function(card) {
-//      card.addEventListener('click', function() {
-//         if(lastFlipped) {
-//           compareCards(lastFlipped, card);
-//         } else {
-//           lastFlipped = card;
-//         }  
-//      }); 
-
-
-//    } 
- 
-// }
-
-// function compareCards() {
-
-//   let cardAClass = openedCards[0].querySelector('div.front').className;
-
-//   let cardBClass = openedCards[1].querySelector('div.front').className;
-
-//   if (cardAClass === cardBClass) {
-//         openedCards[0].classList.add('match');
-//         openedCards[1].classList.add('match');
-
-//   } else {
-//     setTimeout(function () {
-//         openedCards[0].classList.remove('open');
-//         openedCards[1].classList.remove('open');
-//     }, 500);
-
-//     // openedCards.shift();
-//     // openedCards.shift();
-//   }
-
-// }
-
+// Finish the game
 function finishGame() {
   if (matchedCards.length === 16) {
     console.log("Win!!!");
@@ -232,21 +193,20 @@ function finishGame() {
 }
 
 
+// Restart the game
 function restartGame() { 
 	restart.addEventListener('click', function (event) {
-		shuffle(fonts);
-	
+// Shuffle the fonts	and reassign them to the cards	
+    shuffle(fonts);
 	  	for (let i = 0; i < fronts.length; i++) {
 		    let front = fronts[i];
 		    let font = fonts[i];
 		    let card = cards[i];
-		
 		   	front.classList.remove( "bodoni", "carol_gothic", "futura", "karolla", "pragmatica", "olga_script", "lazurski", "liberteen",);
 		    card.classList.remove("open", "match");
-
 		    front.classList.add("" + font);
 	  	}
-
+// Empty  the timer and rating
 		timer.innerHTML = "0 m : 0 s";
 		clearInterval(interval);
 		clickCount = 0;
@@ -263,16 +223,4 @@ document.addEventListener('DOMContentLoaded', function () {
    initGame();
    clickCard();
    restartGame();
-   finishGame();
 });
-
-/*
- * set up the event listener for a card. If a card is clicked:
- *  - display the card's symbol (put this functionality in another function that you call from this one)
- *  - add the card to a *list* of "open" cards (put this functionality in another function that you call from this one)
- *  - if the list already has another card, check to see if the two cards match
- *    + if the cards do match, lock the cards in the open position (put this functionality in another function that you call from this one)
- *    + if the cards do not match, remove the cards from the list and hide the card's symbol (put this functionality in another function that you call from this one)
- *    + increment the move counter and display it on the page (put this functionality in another function that you call from this one)
- *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
- */
