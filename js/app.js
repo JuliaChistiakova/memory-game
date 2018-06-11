@@ -94,11 +94,17 @@ function clickCard() {
 
 
   		card.addEventListener('click', function (event) {
-  		    // event.preventDefault();
+  		    event.preventDefault();
 
           const currentCard = this;
 
           const previousCard = openedCards[0];
+
+          if (this.classList.contains("match")) {
+            return;
+          } 
+
+
 
           if (openedCards.length === 1) {
 
@@ -111,12 +117,14 @@ function clickCard() {
               console.log("Matched");
               currentCard.classList.add('match');
               previousCard.classList.add('match');
+              matchedCards.push(currentCard,previousCard);
               moves ++ ;
+              finishGame();
             } else {             
               console.log("Doesn't match");
                   // currentCard.classList.add('no-match');
                   // previousCard.classList.add('no-match'); 
- // Close opened crads that don't match            
+ // Close opened cards that don't match           
               setTimeout(function () {
                   currentCard.classList.remove('open');
                   previousCard.classList.remove('open');
@@ -234,7 +242,7 @@ function restartGame() {
 		    let card = cards[i];
 		
 		   	front.classList.remove( "bodoni", "carol_gothic", "futura", "karolla", "pragmatica", "olga_script", "lazurski", "liberteen",);
-		    card.classList.remove('open');
+		    card.classList.remove("open", "match");
 
 		    front.classList.add("" + font);
 	  	}
