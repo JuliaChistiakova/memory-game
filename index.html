@@ -1,129 +1,115 @@
 <!doctype html>
 <html lang="en">
-<head>
-    <meta charset="utf-8">
-    <title>Matching Game</title>
-    <meta name="description" content="">
-    <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
-  	<link href="https://fonts.googleapis.com/css?family=Bungee+Outline" rel="stylesheet">
-
-    <link rel="stylesheet" href="css/app.css">
-
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-</head>
-<body>
-
-    <div class="container">
-        <header>
-            <h1>Memory <span class="orange">Font</span> Game</h1>
-        </header>
-
-        <section class="score-panel">
-
-        	<ul class="stars">
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        		<li><i class="fa fa-star"></i></li>
-        	</ul>
-
-        	<span class="moves">0 Moves</span>
-
-            <span class="timer" id="timer"></span>
-
-            <div class="restart">
-        		<i class="fa fa-repeat"></i>
-        	</div>
-
-        </section>
-
-        <ul class="deck">
-
-        	 <li class="card">
-	            <div class="card-face back"></div>
-	            <div class="card-face front"></div>
-            </li>
-
-        	 <li class="card">
-	            <div class="card-face back"></div>
-	            <div class="card-face front"></div>
-            </li>
-
-        	 <li class="card">
-	            <div class="card-face back"></div>
-	            <div class="card-face front"></div>
-            </li>
-
-        	 <li class="card">
-	            <div class="card-face back"></div>
-	            <div class="card-face front"></div>
-            </li>
-
-        	 <li class="card">
-	            <div class="card-face back"></div>
-	            <div class="card-face front"></div>
-            </li>
-
-        	 <li class="card">
-	            <div class="card-face back"></div>
-	            <div class="card-face front"></div>
-            </li>
-            	
-        	 <li class="card">
-	            <div class="card-face back"></div>
-	            <div class="card-face front"></div>
-            </li>
-
-        	 <li class="card">
-	            <div class="card-face back"></div>
-	            <div class="card-face front"></div>
-            </li>
-
-        	 <li class="card">
-	            <div class="card-face back"></div>
-	            <div class="card-face front"></div>
-            </li>
-
-        	 <li class="card">
-	            <div class="card-face back"></div>
-	            <div class="card-face front"></div>
-            </li>
-
-        	 <li class="card">
-	            <div class="card-face back"></div>
-	            <div class="card-face front"></div>
-            </li>
-
-        	 <li class="card">
-	            <div class="card-face back"></div>
-	            <div class="card-face front"></div>
-            </li>
-
-        	 <li class="card">
-	            <div class="card-face back"></div>
-	            <div class="card-face front"></div>
-            </li>
-
-        	 <li class="card">
-	            <div class="card-face back"></div>
-	            <div class="card-face front"></div>
-            </li>
-            	
-        	 <li class="card">
-	            <div class="card-face back"></div>
-	            <div class="card-face front"></div>
-            </li>
-
-        	 <li class="card">
-	            <div class="card-face back"></div>
-	            <div class="card-face front"></div>
-            </li>
-            
-        </ul>
-    </div>
-    <footer>
-        <p>Based on Memory Print&Play Font Game by <a href="http://macoshdesign.pl">MacoshDesign</a></p>
-    </footer>
-
-    <script src="js/app.js"></script>
-</body>
+    <head>
+        <meta charset="utf-8">
+        <title>Matching Game</title>
+        <meta name="description" content="">
+        <!-- <link rel="stylesheet prefetch" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css"> -->
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp" crossorigin="anonymous">
+        <link href="https://fonts.googleapis.com/css?family=Bungee+Outline" rel="stylesheet">
+        <link rel="stylesheet" href="css/app.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div class="modal-wrapper">
+            <div class="modal-container">
+                <div class="text-container">
+                    <i class="fas fa-check-circle orange"></i>
+                    <h2>Congratulations! You've matched all fonts.</h2>
+                    <div class="results"></div>
+                    <!--    <button class="cancel">Cancel</button> -->
+                    <button class="play-again">Play again</button>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <header>
+                <h1>Memory <span class="orange">Font</span> Game</h1>
+            </header>
+            <section class="score-panel">
+                <ul class="stars">
+                    <li><i class="fas fa-star"></i></li>
+                    <li><i class="fas fa-star"></i></li>
+                    <li><i class="fas fa-star"></i></li>
+                </ul>
+                <span class="moves">0 Moves</span>
+                <span class="timer" id="timer"></span>
+                <div class="restart">
+                    <i class="fas fa-redo-alt"></i>
+                </div>
+            </section>
+            <ul class="deck">
+                <li class="card">
+                    <div class="card-face back"></div>
+                    <div class="card-face front"></div>
+                </li>
+                <li class="card">
+                    <div class="card-face back"></div>
+                    <div class="card-face front"></div>
+                </li>
+                <li class="card">
+                    <div class="card-face back"></div>
+                    <div class="card-face front"></div>
+                </li>
+                <li class="card">
+                    <div class="card-face back"></div>
+                    <div class="card-face front"></div>
+                </li>
+                <li class="card">
+                    <div class="card-face back"></div>
+                    <div class="card-face front"></div>
+                </li>
+                <li class="card">
+                    <div class="card-face back"></div>
+                    <div class="card-face front"></div>
+                </li>
+                
+                <li class="card">
+                    <div class="card-face back"></div>
+                    <div class="card-face front"></div>
+                </li>
+                <li class="card">
+                    <div class="card-face back"></div>
+                    <div class="card-face front"></div>
+                </li>
+                <li class="card">
+                    <div class="card-face back"></div>
+                    <div class="card-face front"></div>
+                </li>
+                <li class="card">
+                    <div class="card-face back"></div>
+                    <div class="card-face front"></div>
+                </li>
+                <li class="card">
+                    <div class="card-face back"></div>
+                    <div class="card-face front"></div>
+                </li>
+                <li class="card">
+                    <div class="card-face back"></div>
+                    <div class="card-face front"></div>
+                </li>
+                <li class="card">
+                    <div class="card-face back"></div>
+                    <div class="card-face front"></div>
+                </li>
+                <li class="card">
+                    <div class="card-face back"></div>
+                    <div class="card-face front"></div>
+                </li>
+                
+                <li class="card">
+                    <div class="card-face back"></div>
+                    <div class="card-face front"></div>
+                </li>
+                <li class="card">
+                    <div class="card-face back"></div>
+                    <div class="card-face front"></div>
+                </li>
+            </ul>
+        </div>
+        <footer>
+            <p>Based on Memory Print&Play Font Game by <a href="http://macoshdesign.pl">MacoshDesign</a></p>
+        </footer>
+        <script src="js/app.js"></script>
+    </body>
 </html>
