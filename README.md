@@ -1,17 +1,18 @@
 # Memory Font Game Project
 
-This game was built as a Udacity Front-End Development Nano-degree project. The purpose of the project is to demonstrate mastery of HTML, CSS, and JavaScript.
+This game was built as a Udacity Front-End Web Development Nano-degree project. 
 
 ## How to play
 
 You can access the game at https://juliachistiakova.github.io/font-memory-game/ or download the project. The goal of the game is to match all cards in less time with less moves. 
 
-The deck is made up of 8 pairs of cards, each with different font on one side. Flip a card over to reveal its underlying font, then turn over a second card, trying to find the corresponding card with the same font. If the cards match, both cards stay flipped over.
+The deck is made up of 8 pairs of cards, each with an example of a different font on one side. Flip a card over to reveal the hidden side, then turn over a second card, trying to find the corresponding card with the same font. If the cards match, both cards stay flipped over.
 If the cards do not match, both cards are returned to their initial hidden state. The game ends once all cards have been correctly matched.
 
 ## Browser Compatibility
 
 The game is oprimized for the latest version of Chrome.
+
 ## Contributing
 
 * Fork the repository.
