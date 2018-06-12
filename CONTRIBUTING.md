@@ -1,3 +1,6 @@
 # How to contribute
 
-The files in this repository are used as the starting point for all students. Because we want students to write the majority of the code themselves, pull requests (most likely) will _not_ be merged into the project.
+* Fork the repository.
+* Create a branch (e.g. my-awesome-feature) for the work you’re going to do.
+* Make your awesome changes in your topic branch.
+* Send a pull request from your branch to this repository.
