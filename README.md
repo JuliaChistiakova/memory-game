@@ -19,3 +19,13 @@ The game is oprimized for the latest version of Chrome.
 * Create a branch (e.g. my-awesome-feature) for the work you’re going to do.
 * Make your awesome changes in your topic branch.
 * Send a pull request from your branch to this repository.
+
+## Acknowledgements
+
+Based on Memory Print&Play Font Game by [MacoshDesign](http://macoshdesign.pl).
+
+### Resourses
+
+* [Shuffle function](http://stackoverflow.com/a/2450976)
+* [Font Awesome](https://fontawesome.com)
+* [Google Fonts](https://fonts.google.com)

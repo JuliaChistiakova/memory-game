@@ -1,13 +1,3 @@
-/*
- * Create a list that holds all of your cards
- */
-
-/*
- * Display the cards on the page
- *   - shuffle the list of cards using the provided "shuffle" method below
- *   - loop through each card and create its HTML
- *   - add each card's HTML to the page
- */
 
 // A list that holds all of the fonts
 const fonts = [
@@ -54,7 +44,7 @@ let clickCount = 0;
 
 const stars = document.querySelector('.stars');
 
-const star = document.querySelectorAll('.stars li');
+const star = document.querySelectorAll('.stars li i');
 
 const modal = document.querySelector('.modal-wrapper');
 
@@ -144,10 +134,10 @@ function clickCard () {
       } else {
         movesCount.innerHTML = ' ' + moves + ' Moves';
       }
-      if (moves === 16 && stars.children.length == 3) {
-        stars.removeChild(star[0]);
-      } else if (moves === 26 && stars.children.length == 2) {
-        stars.removeChild(star[1]);
+      if (moves === 3) {
+        star[0].classList.add('hidden');
+      } else if (moves === 5) {
+        star[1].classList.add('hidden');
       }
 
       // Start the timer on the first click
@@ -182,7 +172,8 @@ function startTimer () {
 // Finish the game
 function finishGame () {
   if (matchedCards.length === fonts.length) {
-    results.innerHTML = "You've competed the game in " + moves + ' moves. It took you ' + timer.innerHTML + '.' + '<br>' + '<span>You rating is ' + stars.innerHTML + '</span>';
+    clearInterval(interval);
+    results.innerHTML = "You've competed the game in " + moves + ' moves. It took you ' + timer.innerHTML + '.' + '<br>' + '<span>Your rating is ' + stars.innerHTML + '</span>';
     modal.classList.add('show-modal');
     playAgain();
   }
@@ -208,6 +199,8 @@ function resetGame () {
   movesCount.innerHTML = ' ' + moves + ' Moves';
   openedCards = [];
   matchedCards = [];
+  star[0].classList.remove('hidden');
+  star[1].classList.remove('hidden');
   initGame();
 }
 

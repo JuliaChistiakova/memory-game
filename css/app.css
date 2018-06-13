@@ -320,6 +320,10 @@ footer a:hover {
     transform: translateY(1px);
 }
 
+.hidden {
+    display: none;
+}
+
 /* responsiveness */
 @media only screen and (max-width:450px) {
     h1 {
