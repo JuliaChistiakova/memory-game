@@ -134,9 +134,9 @@ function clickCard () {
       } else {
         movesCount.innerHTML = ' ' + moves + ' Moves';
       }
-      if (moves === 3) {
+      if (moves === 16) {
         star[0].classList.add('hidden');
-      } else if (moves === 5) {
+      } else if (moves === 26) {
         star[1].classList.add('hidden');
       }
 
